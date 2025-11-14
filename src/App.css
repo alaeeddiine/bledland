@@ -1,38 +1,823 @@
-.App {
-  text-align: center;
-}
+/* Enhanced Mobile Responsive CSS for BledLand - Urban Design */
+/* Targets screens up to 768px width */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  /* Base Mobile Reset */
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+  
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+  
+  /* Mobile Container */
+  .mobile-container {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  /* FIXED HERO SECTION - Proper Mobile Height */
+  .hero {
+    padding-left: 100%;
+    height: 90vh;
+    height: 90dvh;
+    padding: 0 1rem;
+    position: relative;
+    min-height: 100%;
+    max-height: 100%;
+  }
+  
+  .hero-3d-container {
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .floating-element {
+    font-size: 3rem !important;
+    -webkit-text-stroke: 1px var(--urban-orange);
+    opacity: 0.15;
+  }
+  
+  .element-1 {
+    top: 15% !important;
+    left: 5% !important;
+  }
+  
+  .element-2 {
+    top: 65% !important;
+    right: 5% !important;
+  }
+  
+  .element-3 {
+    top: 30% !important;
+    left: 30% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .hero-content {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .title-urban {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(0.75rem, 3vw, 0.9rem) !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    max-width: 250px;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* ENHANCED BURGER MENU - Mobile Optimized */
+  .burger-menu-urban {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
+  }
+  
+  .burger-line {
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    margin: 3px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+  
+  .burger-menu-urban.open .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: var(--urban-orange);
+  }
+  
+  .burger-menu-urban.open .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  
+  .burger-menu-urban.open .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--urban-orange);
+  }
+  
+  /* Mobile Menu Overlay Improvements */
+  .mobile-menu-overlay-urban {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--matte-black-dark);
+    border-left: 1px solid var(--urban-orange);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+  }
+  
+  .mobile-menu-overlay-urban.open {
+    right: 0;
+  }
+  
+  .mobile-menu-content-urban {
+    padding: 80px 1.5rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-menu-header-urban {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--urban-border);
+  }
+  
+  .mobile-menu-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--urban-orange);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-menu-accent {
+    width: 40px;
+    height: 2px;
+    background: var(--urban-orange);
+  }
+  
+  .mobile-nav-links-urban {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+  
+  .mobile-nav-item-urban {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-nav-link-urban {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    position: relative;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  }
+  
+  .mobile-nav-link-urban:hover,
+  .mobile-nav-link-urban.active {
+    color: var(--urban-orange);
+  }
+  
+  .nav-number {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--urban-orange);
+    margin-right: 1rem;
+    min-width: 25px;
+  }
+  
+  .nav-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+    flex: 1;
+  }
+  
+  .nav-arrow {
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+    color: var(--urban-orange);
+    font-size: 1rem;
+  }
+  
+  .mobile-nav-link-urban:hover .nav-arrow,
+  .mobile-nav-link-urban.active .nav-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .mobile-menu-footer-urban {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--urban-border);
+  }
+  
+  .mobile-menu-stats-urban {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;
+  }
+  
+  .mobile-stat {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .stat-number {
+    display: block;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--urban-orange);
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+  }
+  
+  /* Menu Backdrop */
+  .menu-backdrop-urban {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-backdrop-urban.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Enhanced Stats Section */
+  .stats-section {
+    padding: 3rem 1rem;
+  }
+  
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0;
+  }
+  
+  .stat-card-urban {
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .stat-number-urban {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label-urban {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+  
+  /* Improved Story Section */
+  .story-section {
+    padding: 3rem 1rem;
+  }
+  
+  .story-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+  
+  .section-title-urban {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-desc-urban {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .features-grid-urban {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .feature-card-urban {
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .feature-icon-urban {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .feature-title-urban {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-desc-urban {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  /* Enhanced Countdown Section */
+  .countdown-section {
+    padding: 3rem 1rem;
+  }
+  
+  .countdown-urban {
+    padding: 0;
+  }
+  
+  .countdown-title-urban {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .countdown-subtitle-urban {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  
+  .timer-urban {
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    justify-content: space-between;
+  }
+  
+  .time-unit-urban {
+    flex: 1;
+    min-width: 65px;
+    max-width: 80px;
+  }
+  
+  .time-card-urban {
+    width: 100%;
+    height: 65px;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .time-number-urban {
+    font-size: 1.6rem;
+  }
+  
+  .time-label-urban {
+    font-size: 0.75rem;
+  }
+  
+  /* ENHANCED CITIES SECTION - 2 per line */
+  .cities-section {
+    padding: 3rem 1rem;
+  }
+  
+  .cities-grid-urban {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0;
+    margin-top: 2rem;
+  }
+  
+  .city-card-urban {
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  .city-card-inner-urban {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .city-card-urban:hover .city-card-inner-urban {
+    transform: rotateY(180deg);
+  }
+  
+  .city-card-front-urban, 
+  .city-card-back-urban {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    border: 1px solid var(--urban-border);
+  }
+  
+  .city-card-front-urban {
+    background: var(--matte-black-light);
+  }
+  
+  .city-card-back-urban {
+    background: var(--matte-black);
+    border: 2px solid var(--urban-orange);
+    transform: rotateY(180deg);
+    text-align: center;
+  }
+  
+  .city-number {
+    font-size: 2.5rem;
+    opacity: 0.3;
+    margin-bottom: 0.5rem;
+  }
+  
+  .city-name-urban {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  .city-underline {
+    width: 30px;
+    height: 2px;
+    background: var(--urban-orange);
+  }
+  
+  .city-desc-urban {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+  }
+  
+  /* ENHANCED FOOTER - Mobile Optimized */
+  /* Footer Mobile */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  /* Enhanced Brand Section */
+  .brand-section {
+    padding: 3rem 1rem;
+  }
+  
+  .brand-content-urban {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .brand-title-urban {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .brand-desc-urban {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .brand-stats-urban {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .brand-stat {
+    flex: 1;
+  }
+  
+  .brand-stat-number {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .brand-stat-label {
+    font-size: 0.75rem;
+  }
+  
+  /* Enhanced Newsletter Section */
+  .newsletter-section {
+    padding: 3rem 1rem;
+  }
+  
+  .newsletter-content-urban {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .newsletter-title-urban {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .newsletter-subtitle-urban {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  /* Mobile Touch Optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .city-card-urban:hover .city-card-inner-urban {
+      transform: none;
+    }
+    
+    .city-card-urban:active .city-card-inner-urban {
+      transform: scale(0.98);
+    }
+    
+    .cta-btn:active,
+    .notify-btn-urban:active,
+    .subscribe-btn-urban:active,
+    .explore-btn-urban:active,
+    .footer-btn-urban:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+    
+    .social-link-urban:active {
+      transform: scale(0.95);
+    }
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Tablet Optimizations (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    height: 80vh;
+    min-height: 700px;
+    max-height: 900px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .cities-grid-urban {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .footer-content-urban {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Small Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 85vh;
+    min-height: 550px;
+    max-height: 700px;
+  }
+  
+  .cities-grid-urban {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .footer-links-urban {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .mobile-menu-overlay-urban {
+    width: 90%;
+    max-width: 280px;
+  }
+  
+  .footer-legal-urban {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+/* Very Small Devices (up to 360px) */
+@media (max-width: 360px) {
+  .hero {
+    height: 85vh;
+    min-height: 500px;
+    max-height: 600px;
+  }
+  
+  .title-urban {
+    font-size: clamp(1.6rem, 8vw, 2rem) !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.7rem !important;
+  }
+  
+  .cta-btn {
+    max-width: 220px;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .mobile-menu-overlay-urban {
+    width: 95%;
+    max-width: 260px;
+  }
+  
+  .mobile-menu-content-urban {
+    padding: 80px 1rem 1.5rem;
+  }
+}
+
+/* Mobile Landscape Optimization */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    height: 100vh;
+    min-height: 400px;
+    max-height: 500px;
+    padding: 70px 1rem 1rem;
+  }
+  
+  .hero-content {
+    padding: 0.5rem 0;
+  }
+  
+  .title-urban {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.7rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-cta {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .cta-btn {
+    max-width: 140px;
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+  }
+  
+  .cities-grid-urban {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .city-card-urban {
+    height: 200px;
+  }
+}
+
+/* Safe Areas Support */
+@supports(padding: max(0px)) {
+  @media (max-width: 768px) {
+    .hero,
+    .stats-section,
+    .story-section,
+    .countdown-section,
+    .cities-section,
+    .brand-section,
+    .newsletter-section,
+    .footer-urban {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .hero {
+      padding-top: max(0px, env(safe-area-inset-top));
+    }
+    
+    .footer-urban {
+      padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+    
+    .scroll-top-urban {
+      right: max(1.5rem, env(safe-area-inset-right));
+      bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* Performance Optimizations for Mobile */
+@media (max-width: 768px) {
+  .hero-video {
+    display: none;
+  }
+  
+  .urban-grid {
+    animation-duration: 40s;
+  }
+  
+  /* Enable GPU acceleration */
+  .city-card-inner-urban,
+  .floating-element,
+  .urban-cube,
+  .mobile-menu-overlay-urban {
+    transform: translateZ(0);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .city-card-inner-urban,
+  .floating-elements,
+  .urban-cube,
+  .burger-line,
+  .mobile-menu-overlay-urban {
+    transition: none;
+    animation: none;
+  }
+  
+  .city-card-urban:hover .city-card-inner-urban {
+    transform: none;
+  }
+  
+  .burger-menu-urban.open .burger-line {
+    transform: none;
   }
 }
