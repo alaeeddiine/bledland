@@ -37,6 +37,25 @@ const Home = () => {
     }, 1000);
     return () => clearTimeout(timer);
   });
+  useEffect(() => {
+    const cards = document.querySelectorAll('.city-card-urban');
+    
+    const handleClick = (card) => () => {
+      card.classList.toggle('active');
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('click', handleClick(card));
+    });
+
+    // Cleanup listeners on unmount
+    return () => {
+      cards.forEach(card => {
+        card.removeEventListener('click', handleClick(card));
+      });
+    };
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
