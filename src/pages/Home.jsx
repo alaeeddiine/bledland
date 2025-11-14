@@ -5,7 +5,6 @@ import star from '../assets/star.png';
 import { db } from '../firebase/firebase';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
-
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [email, setEmail] = useState('');
@@ -14,19 +13,10 @@ const Home = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isVisible, setIsVisible] = useState({});
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [flippedCardIndex, setFlippedCardIndex] = useState(null);
+
   const heroRef = useRef(null);
   const sectionRefs = useRef([]);
-  const cityCards = document.querySelectorAll('.city-card-urban');
-
-  cityCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      // Remove active from other cards (so only one flips at a time)
-      cityCards.forEach((c) => c !== card && c.classList.remove('active'));
-      
-      // Toggle active class on tapped card
-      card.classList.toggle('active');
-    });
-  });
 
   function calculateTimeLeft() {
     const difference = +new Date('2026-01-01') - +new Date();
@@ -48,25 +38,6 @@ const Home = () => {
     }, 1000);
     return () => clearTimeout(timer);
   });
-  useEffect(() => {
-    const cards = document.querySelectorAll('.city-card-urban');
-    
-    const handleClick = (card) => () => {
-      card.classList.toggle('active');
-    };
-
-    cards.forEach(card => {
-      card.addEventListener('click', handleClick(card));
-    });
-
-    // Cleanup listeners on unmount
-    return () => {
-      cards.forEach(card => {
-        card.removeEventListener('click', handleClick(card));
-      });
-    };
-  }, []);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,8 +49,8 @@ const Home = () => {
       sectionRefs.current.forEach((section, index) => {
         if (section) {
           const rect = section.getBoundingClientRect();
-          const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom >= 0;
-          setIsVisible(prev => ({ ...prev, [index]: isVisible }));
+          const visible = rect.top < window.innerHeight * 0.8 && rect.bottom >= 0;
+          setIsVisible(prev => ({ ...prev, [index]: visible }));
         }
       });
     };
@@ -108,14 +79,11 @@ const Home = () => {
 
   const handleNotifySubmit = async (e) => {
     e.preventDefault();
-
-    // Validation simple de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("❌ Email invalide !");
       return;
     }
-
     try {
       await addDoc(collection(db, "bledlist"), {
         email: email,
@@ -128,7 +96,6 @@ const Home = () => {
       alert("❌ Une erreur est survenue. Réessaye !");
     }
   };
-
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
@@ -166,6 +133,10 @@ const Home = () => {
     { name: "MARRAKESH", desc: "The red city never hides its heat. The Marrakech capsule is vibrant, fearless, and unapologetically Moroccan."},
     { name: "FEZ", desc: "Old walls, ancient crafts, timeless vibes. Fès reminds us where it all started — the roots that built our style."},
   ];
+
+  const handleCardClick = (index) => {
+    setFlippedCardIndex(prev => (prev === index ? null : index));
+  };
 
   return (
     <div className="home">
@@ -303,7 +274,7 @@ const Home = () => {
           </form>
         </div>
       </section>
-
+      
       {/* CITIES SECTION */}
       <section 
         id="cities" 
@@ -319,7 +290,8 @@ const Home = () => {
           {cities.map((city, i) => (
             <div 
               key={i} 
-              className="city-card-urban"
+              className={`city-card-urban ${flippedCardIndex === i ? 'active' : ''}`}
+              onClick={() => handleCardClick(i)}
               style={{ 
                 '--city-color': city.color,
                 '--city-image': `url('/images/cities/${city.name.toLowerCase()}.jpg')`
