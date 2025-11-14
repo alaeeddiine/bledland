@@ -16,6 +16,17 @@ const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const sectionRefs = useRef([]);
+  const cityCards = document.querySelectorAll('.city-card-urban');
+
+  cityCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      // Remove active from other cards (so only one flips at a time)
+      cityCards.forEach((c) => c !== card && c.classList.remove('active'));
+      
+      // Toggle active class on tapped card
+      card.classList.toggle('active');
+    });
+  });
 
   function calculateTimeLeft() {
     const difference = +new Date('2026-01-01') - +new Date();
