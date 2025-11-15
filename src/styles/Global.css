@@ -670,7 +670,7 @@ body.menu-open {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.city-card-urban:hover .city-card-inner-urban {
+.city-card-urban.active .city-card-inner-urban {
   transform: rotateY(180deg);
 }
 
@@ -2084,129 +2084,66 @@ body {
   background: var(--urban-orange-dark);
 }
 
-/* CITIES SECTION */
+/* --- CITIES --- */
 .cities-section {
-  padding: 8rem 2rem;
-  background: var(--matte-black-dark);
-  position: relative;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
-}
-
-.cities-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cities-urban-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 94, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 94, 0, 0.1) 0%, transparent 50%);
-  opacity: 0.3;
+  padding: 3rem 1rem;
 }
 
 .cities-grid-urban {
-  max-width: 1200px;
-  margin: 4rem auto 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
+/* CARD FRAME */
 .city-card-urban {
-  height: 300px;
-  perspective: 1000px;
-}
-
-.city-card-inner-urban {
   position: relative;
   width: 100%;
+  height: 280px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* INNER (FRONT + BACK) */
+.city-card-inner-urban {
+  width: 100%;
   height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
+  transition: transform 0.6s ease;
   transform-style: preserve-3d;
 }
 
-.city-card-urban:hover .city-card-inner-urban {
+/* Flip when active */
+.city-card-urban.active .city-card-inner-urban {
   transform: rotateY(180deg);
 }
 
-.city-card-front-urban, .city-card-back-urban {
+/* SHARED */
+.city-card-front-urban,
+.city-card-back-urban {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
+/* FRONT */
 .city-card-front-urban {
-  background: var(--matte-black-light);
-  border: 1px solid var(--urban-border);
+  background-size: cover;
+  background-position: center;
 }
 
+/* BACK */
 .city-card-back-urban {
-  background: var(--matte-black);
-  border: 2px solid var(--urban-orange);
+  background: #111;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotateY(180deg);
-}
-
-.city-number {
-  font-family: 'Orbitron', monospace;
-  font-size: 4rem;
-  font-weight: 700;
-  color: var(--urban-orange);
-  opacity: 0.3;
-  margin-bottom: 1rem;
-}
-
-.city-name-urban {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.city-underline {
-  width: 50px;
-  height: 2px;
-  background: var(--urban-orange);
-}
-
-.city-desc-urban {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.explore-btn-urban {
-  padding: 0.8rem 2rem;
-  background: transparent;
-  border: 1px solid var(--urban-orange);
-  color: var(--urban-orange);
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.explore-btn-urban:hover {
-  background: var(--urban-orange);
-  color: var(--matte-black);
 }
 
 /* BRAND SECTION */
