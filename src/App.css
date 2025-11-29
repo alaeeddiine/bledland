@@ -1,77 +1,123 @@
-/* Mobile Responsive & Web App CSS */
-/* ===== WEB APP META TAGS ===== */
-/* Add these to your HTML head:
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0a0a0a">
-*/
+/* COMPLETE MOBILE FIX - BledLand Urban Design */
+/* Targets all mobile screens up to 768px */
 
-/* ===== MOBILE FIRST RESPONSIVE DESIGN ===== */
-@media screen and (max-width: 480px) {
-  /* Base Mobile Optimizations */
-  * {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-  
+@media (max-width: 768px) {
+  /* ===== BASE MOBILE RESET ===== */
   html {
     font-size: 14px;
+    scroll-behavior: smooth;
   }
   
   body {
-    font-size: 16px; /* Prevent zoom on iOS */
     overflow-x: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
   }
   
-  /* Mobile Navbar */
+  /* ===== FIXED NAVBAR - NO OVERLAP ISSUES ===== */
   .navbar-urban {
-    height: 60px;
     background: rgba(13, 13, 13, 0.98);
     backdrop-filter: blur(20px);
+    height: 70px;
   }
   
   .nav-container-urban {
-    height: 60px;
     padding: 0 1rem;
+    height: 70px;
+    max-width: 100%;
   }
   
   .logo-text {
-    font-size: 1.3rem;
-    letter-spacing: 0.1em;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
   }
   
+  /* Burger menu positioning fix */
   .burger-menu-urban {
-    width: 25px;
-    height: 25px;
+    display: flex !important;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
+    margin-left: auto;
   }
   
-  /* Mobile Hero Section */
+  /* Ensure nav links are hidden */
+  .nav-links-urban {
+    display: none !important;
+  }
+  
+  /* ===== MOBILE MENU OVERLAY FIXES ===== */
+  .mobile-menu-overlay-urban {
+    width: 85%;
+    max-width: 300px;
+    right: -100%;
+  }
+  
+  .mobile-menu-overlay-urban.open {
+    right: 0;
+  }
+  
+  .mobile-menu-content-urban {
+    padding: 90px 1.5rem 2rem;
+  }
+  
+  .mobile-nav-link-urban {
+    padding: 1.2rem 0;
+  }
+  
+  /* ===== HERO SECTION MOBILE FIX ===== */
   .hero {
     height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
+    height: 100dvh;
     padding: 0 1rem;
+    min-height: 600px;
+  }
+  
+  .hero-3d-container {
+    padding-top: 70px;
+    width: 100%;
+  }
+  
+  .floating-element {
+    font-size: 3rem !important;
+    -webkit-text-stroke: 1px var(--urban-orange);
+    opacity: 0.1;
+  }
+  
+  .element-1 {
+    top: 20% !important;
+    left: 5% !important;
+  }
+  
+  .element-2 {
+    top: 70% !important;
+    right: 5% !important;
+  }
+  
+  .element-3 {
+    top: 45% !important;
+    left: 10% !important;
+    transform: none !important;
   }
   
   .hero-content {
-    padding: 0 1rem;
+    padding: 0;
+    width: 100%;
   }
   
   .title-urban {
-    font-size: clamp(2rem, 10vw, 3.5rem);
-    letter-spacing: 0.1em;
-    line-height: 1.2;
+    font-size: clamp(2.2rem, 10vw, 3.5rem) !important;
+    letter-spacing: 0.15em !important;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
   }
   
   .hero-subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 2rem;
+    font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
   }
   
   .hero-cta {
@@ -83,120 +129,84 @@
   .cta-btn {
     width: 100%;
     max-width: 280px;
-    padding: 1rem 2rem;
+    padding: 1.1rem 2rem;
     font-size: 0.9rem;
   }
   
-  /* Floating Elements Optimization */
-  .floating-element {
-    font-size: 4rem;
-    -webkit-text-stroke: 1px var(--urban-orange);
+  /* ===== STATS SECTION MOBILE ===== */
+  .stats-section {
+    padding: 4rem 1rem;
   }
   
-  .element-1 {
-    top: 15%;
-    left: 5%;
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
-  .element-2 {
-    top: 70%;
-    right: 5%;
+  .stat-card-urban {
+    padding: 1.5rem 0.8rem;
+    min-height: 130px;
   }
   
-  /* Mobile Sections */
-  .section {
-    padding: 3rem 1rem;
+  .stat-number-urban {
+    font-size: 2.2rem;
+  }
+  
+  .stat-label-urban {
+    font-size: 0.75rem;
+  }
+  
+  /* ===== STORY SECTION MOBILE ===== */
+  .story-section {
+    padding: 4rem 1rem;
   }
   
   .section-title-urban {
     font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  /* Mobile Story Section */
-  .story-section {
-    padding: 4rem 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .story-desc-urban {
     font-size: 1rem;
     line-height: 1.6;
+    margin-bottom: 2rem;
   }
   
   .features-grid-urban {
+    display: flex;
+    overflow-x: auto;
     gap: 1rem;
     padding: 1rem 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .features-grid-urban::-webkit-scrollbar {
+    display: none;
   }
   
   .feature-card-urban {
-    min-width: 85vw;
-    scroll-snap-align: start;
+    min-width: 260px;
     padding: 1.5rem;
+    flex-shrink: 0;
   }
   
-  .story-content-horizontal {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .story-visual-urban {
-    height: 250px;
-  }
-  
-  .urban-cube {
-    width: 80px;
-    height: 80px;
-  }
-  
-  /* Mobile Cities Grid */
-  .cities-section {
-    padding: 3rem 1rem;
-  }
-  
-  .cities-grid-urban {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .city-card-urban {
-    height: 250px;
-    perspective: 800px;
-  }
-  
-  .city-number {
-    font-size: 2.5rem;
-  }
-  
-  .city-name-urban {
-    font-size: 1.3rem;
-    letter-spacing: 0.1em;
-  }
-  
-  .city-desc-urban {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Mobile Countdown */
+  /* ===== COUNTDOWN SECTION MOBILE ===== */
   .countdown-section {
     padding: 4rem 1rem;
   }
   
   .countdown-title-urban {
-    font-size: 1.8rem;
-  }
-  
-  .countdown-subtitle-urban {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
   }
   
   .timer-urban {
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .time-unit-urban {
+    min-width: 70px;
   }
   
   .time-card-urban {
@@ -205,84 +215,239 @@
   }
   
   .time-number-urban {
-    font-size: 1.5rem;
-  }
-  
-  .time-label-urban {
-    font-size: 0.8rem;
-  }
-  
-  /* Mobile Stats */
-  .stats-section {
-    padding: 3rem 1rem;
-  }
-  
-  .stats-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .stat-card-urban {
-    padding: 1.5rem;
-  }
-  
-  .stat-number-urban {
-    font-size: 2rem;
-  }
-  
-  /* Mobile Brand Section */
-  .brand-section {
-    padding: 4rem 1rem;
-  }
-  
-  .brand-title-urban {
     font-size: 1.8rem;
-  }
-  
-  .brand-desc-urban {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .brand-stats-urban {
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .brand-stat-number {
-    font-size: 1.8rem;
-  }
-  
-  .brand-btn-urban {
-    width: 100%;
-    max-width: 280px;
-    padding: 1rem 2rem;
-  }
-  
-  /* Mobile Newsletter */
-  .newsletter-section {
-    padding: 4rem 1rem;
-  }
-  
-  .newsletter-title-urban {
-    font-size: 1.8rem;
-  }
-  
-  .newsletter-subtitle-urban {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .newsletter-form-urban {
-    margin-bottom: 2rem;
   }
   
   .input-group-urban {
     flex-direction: column;
   }
   
-  .urban-input, .notify-btn-urban, .subscribe-btn-urban {
+  .urban-input, 
+  .notify-btn-urban {
     width: 100%;
+  }
+  
+  /* ===== CITIES SECTION MOBILE - FIXED FLIP ===== */
+.cities-section {
+  padding: 4rem 1rem;
+}
+
+.cities-grid-urban {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.city-card-urban {
+  height: 280px;
+  perspective: 1000px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: relative; /* Add this */
+}
+
+.city-card-inner-urban {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  /* Remove any transform properties that might cause movement */
+}
+
+/* FIX: Mobile touch flip - NO POSITION CHANGE */
+.city-card-urban.flipped .city-card-inner-urban {
+  transform: rotateY(180deg);
+  /* No translate or other transforms that cause movement */
+}
+
+.city-card-front-urban, 
+.city-card-back-urban {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  /* Ensure both sides have the same dimensions */
+  top: 0;
+  left: 0;
+}
+
+.city-card-front-urban {
+  background: var(--matte-black-light);
+  border: 1px solid var(--urban-border);
+  position: absolute; /* Change to absolute */
+  overflow: hidden;
+  transform: rotateY(0deg); /* Explicitly set */
+}
+
+/* City images for mobile */
+.city-card-front-urban::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.city-card-urban:nth-child(1) .city-card-front-urban::before {
+  background-image: url('../src/assets/Rabat.jpg');
+}
+.city-card-urban:nth-child(2) .city-card-front-urban::before {
+  background-image: url('../src/assets/Casablanca.jpg');
+}
+.city-card-urban:nth-child(3) .city-card-front-urban::before {
+  background-image: url('../src/assets/Tanger.jpg');
+}
+.city-card-urban:nth-child(4) .city-card-front-urban::before {
+  background-image: url('../src/assets/marraesh.jpg');
+}
+.city-card-urban:nth-child(5) .city-card-front-urban::before {
+  background-image: url('../src/assets/fez.jpg');
+}
+
+.city-card-back-urban {
+  background: var(--matte-black);
+  border: 2px solid var(--urban-orange);
+  transform: rotateY(180deg); /* Start flipped */
+  text-align: center;
+  position: absolute; /* Change to absolute */
+}
+
+.city-number {
+  font-size: 3rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.city-name-urban {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.city-underline {
+  width: 40px;
+  height: 2px;
+  background: var(--urban-orange);
+  position: relative;
+  z-index: 1;
+}
+
+.city-desc-urban {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile tap indicator */
+.city-card-front-urban::after {
+  content: 'TAP TO EXPLORE';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* ===== SMALL PHONES (up to 480px) ===== */
+@media (max-width: 480px) {
+  .cities-grid-urban {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .city-card-urban {
+    height: 250px;
+  }
+}
+
+/* ===== VERY SMALL PHONES (up to 360px) ===== */
+@media (max-width: 360px) {
+  .cities-grid-urban {
+    grid-template-columns: 1fr;
+  }
+  
+  .city-card-urban {
+    height: 230px;
+  }
+  
+  .city-number {
+    font-size: 2.5rem;
+  }
+  
+  .city-name-urban {
+    font-size: 1rem;
+  }
+}
+
+/* ===== LANDSCAPE MOBILE FIX ===== */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+  .cities-grid-urban {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .city-card-urban {
+    height: 180px;
+  }
+}
+  
+  /* ===== BRAND SECTION MOBILE ===== */
+  .brand-section {
+    padding: 4rem 1rem;
+  }
+  
+  .brand-title-urban {
+    font-size: 2rem;
+  }
+  
+  .brand-stats-urban {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .brand-stat-number {
+    font-size: 2rem;
+  }
+  
+  .brand-btn-urban {
+    width: 100%;
+    max-width: 280px;
+    padding: 1.2rem 2rem;
+  }
+  
+  /* ===== NEWSLETTER SECTION MOBILE ===== */
+  .newsletter-section {
+    padding: 4rem 1rem;
+  }
+  
+  .newsletter-title-urban {
+    font-size: 2rem;
+  }
+  
+  .newsletter-form-urban {
+    margin-bottom: 3rem;
   }
   
   .newsletter-footer-urban {
@@ -294,7 +459,11 @@
     display: none;
   }
   
-  /* Mobile Footer */
+  /* ===== FOOTER MOBILE ===== */
+  .footer {
+    padding: 3rem 1rem 2rem;
+  }
+  
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -305,235 +474,202 @@
     justify-content: center;
   }
   
-  /* Mobile Menu Overlay */
-  .mobile-menu-overlay-urban {
-    max-width: 100%;
-  }
-  
-  .mobile-menu-content-urban {
-    padding: 80px 1.5rem 1.5rem;
-  }
-  
-  .mobile-nav-link-urban {
-    padding: 1.2rem 0;
-  }
-  
-  .nav-label {
-    font-size: 1rem;
-  }
-  
-  /* Scroll to Top Button */
+  /* ===== SCROLL TO TOP MOBILE ===== */
   .scroll-top-urban {
-    bottom: 1rem;
-    right: 1rem;
     width: 45px;
     height: 45px;
-    font-size: 1.2rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 
-/* ===== TABLET OPTIMIZATIONS ===== */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .hero-title {
-    font-size: 4rem;
+/* ===== SMALL PHONES (up to 480px) ===== */
+@media (max-width: 480px) {
+  .cities-grid-urban {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .city-card-urban {
+    height: 250px;
+  }
+  
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .mobile-menu-overlay-urban {
+    width: 90%;
+    max-width: 280px;
+  }
+  
+  .title-urban {
+    font-size: clamp(1.8rem, 9vw, 2.8rem) !important;
+  }
+}
+
+/* ===== VERY SMALL PHONES (up to 360px) ===== */
+@media (max-width: 360px) {
+  .hero {
+    min-height: 550px;
+  }
+  
+  .cities-grid-urban {
+    grid-template-columns: 1fr;
+  }
+  
+  .city-card-urban {
+    height: 230px;
+  }
+  
+  .city-number {
+    font-size: 2.5rem;
+  }
+  
+  .city-name-urban {
+    font-size: 1rem;
+  }
+  
+  .mobile-menu-overlay-urban {
+    width: 95%;
+    max-width: 260px;
+  }
+  
+  .mobile-menu-content-urban {
+    padding: 80px 1rem 1.5rem;
+  }
+}
+
+/* ===== LANDSCAPE MOBILE FIX ===== */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 1rem 2rem;
+  }
+  
+  .hero-3d-container {
+    padding-top: 60px;
+  }
+  
+  .title-urban {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.8rem !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-cta {
+    flex-direction: row;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  
+  .cta-btn {
+    max-width: 160px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.8rem;
   }
   
   .cities-grid-urban {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
   }
   
-  .features-grid-urban {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .section {
-    padding: 4rem 1.5rem;
+  .city-card-urban {
+    height: 180px;
   }
 }
 
-/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
-@media (hover: none) and (pointer: coarse) {
-  /* Remove hover effects for touch devices */
-  .city-card-urban:hover .city-card-inner-urban {
-    transform: none;
-  }
-  
-  .feature-card-urban:hover {
-    transform: none;
-    border-color: var(--urban-border);
-  }
-  
-  .feature-card-urban:hover .feature-hover-line {
-    width: 0;
-  }
-  
-  .stat-card-urban:hover {
-    transform: none;
-  }
-  
-  .stat-card-urban:hover::before {
-    left: -100%;
-  }
-  
-  /* Add active states for touch */
-  .city-card-urban:active .city-card-inner-urban {
-    transform: rotateY(180deg);
-  }
-  
-  .feature-card-urban:active {
-    border-color: var(--urban-orange);
-    transform: scale(0.98);
-  }
-  
-  .cta-btn:active {
-    transform: scale(0.98);
-  }
-  
-  /* Improve button touch targets */
-  .cta-btn, .notify-btn-urban, .subscribe-btn-urban, .explore-btn-urban {
-    min-height: 44px; /* Apple HIG minimum touch target */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .burger-menu-urban {
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-  }
-  
-  .social-link {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-/* ===== WEB APP SPECIFIC STYLES ===== */
-/* Prevent address bar hide/show on scroll */
-html {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Hide browser UI when in standalone mode */
-@media all and (display-mode: standalone) {
-  .navbar-urban {
-    padding-top: env(safe-area-inset-top);
-  }
-  
-  .hero {
-    padding-top: env(safe-area-inset-top);
-  }
-}
-
-/* Safe area insets for notched devices */
+/* ===== SAFE AREA SUPPORT ===== */
 @supports(padding: max(0px)) {
-  .navbar-urban, .hero, .section {
-    padding-left: max(1rem, env(safe-area-inset-left));
-    padding-right: max(1rem, env(safe-area-inset-right));
+  @media (max-width: 768px) {
+    .hero,
+    .stats-section,
+    .story-section,
+    .countdown-section,
+    .cities-section,
+    .brand-section,
+    .newsletter-section,
+    .footer {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .nav-container-urban {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .hero {
+      padding-top: max(0px, env(safe-area-inset-top));
+    }
+    
+    .scroll-top-urban {
+      right: max(1.5rem, env(safe-area-inset-right));
+      bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* ===== TOUCH DEVICE FIXES ===== */
+@media (hover: none) and (pointer: coarse) {
+  .city-card-urban:hover .city-card-inner-urban {
+    transform: none !important;
   }
   
-  .navbar-urban {
-    padding-top: max(0px, env(safe-area-inset-top));
+  /* Add active state feedback */
+  .city-card-urban:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
   }
   
-  .footer {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  .cta-btn:active,
+  .notify-btn-urban:active,
+  .subscribe-btn-urban:active,
+  .explore-btn-urban:active {
+    transform: scale(0.98);
+    opacity: 0.9;
   }
 }
 
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
-/* Reduce animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
+@media (max-width: 768px) {
   .hero-video {
     display: none;
   }
-}
-
-/* Hardware acceleration for smooth scrolling */
-.hero, .section, .city-card-inner-urban {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-/* ===== MOBILE-SPECIFIC INTERACTIONS ===== */
-/* Pull-to-refresh prevention */
-body {
-  overscroll-behavior-y: none;
-}
-
-/* Better scrolling momentum */
-.features-grid-urban, .mobile-menu-content-urban {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-/* Improved text readability on mobile */
-.story-text, .city-desc-urban, .brand-desc-urban {
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* Optimize images for mobile */
-.city-card-front-urban::before {
-  background-size: cover;
-  background-position: center;
-}
-
-/* Mobile-specific loading states */
-.loading {
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
-@media (prefers-contrast: high) {
-  :root {
-    --urban-orange: #ff4500;
-    --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-  }
-}
-
-/* Focus styles for keyboard navigation */
-.cta-btn:focus-visible,
-.notify-btn-urban:focus-visible,
-.subscribe-btn-urban:focus-visible,
-.burger-menu-urban:focus-visible {
-  outline: 2px solid var(--urban-orange);
-  outline-offset: 2px;
-}
-
-/* ===== PRINT STYLES ===== */
-@media print {
-  .navbar-urban,
-  .hero-cta,
-  .scroll-top-urban,
-  .footer {
-    display: none;
+  
+  .urban-grid {
+    animation-duration: 30s;
   }
   
-  body {
-    background: white;
-    color: black;
+  /* Reduce animation intensity */
+  .floating-element {
+    animation-duration: 8s;
+  }
+  
+  .cta-btn.urban-primary {
+    animation: none;
+  }
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  .city-card-inner-urban,
+  .floating-element,
+  .urban-cube,
+  .burger-line,
+  .mobile-menu-overlay-urban,
+  .scroll-arrow {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .city-card-urban.flipped .city-card-inner-urban {
+    transform: rotateY(180deg);
   }
 }
